@@ -28,10 +28,7 @@ public class Sistema_Inventarios {
 
             // La conexión ha sido establecida con éxito
             System.out.println("Conexión exitosa a la base de datos");
-
-            // Realizar operaciones en la base de datos...
-
-            // Cerrar la conexión cuando hayas terminado
+            
             conexion.close();
         } catch (SQLException e) {
             // Manejar errores de conexión
