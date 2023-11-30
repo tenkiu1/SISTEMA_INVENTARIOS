@@ -20,7 +20,7 @@ public class Login extends javax.swing.JFrame {
   String url = "jdbc:mysql://localhost:3306/inventarios";
         String usuario1 = "root";
         String contraseña1 = "";
-    public Login() {
+        public Login() {
         super("Login");
         initComponents();
         
@@ -148,7 +148,6 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      String usuario= usurio.getText();
      String contraseña = new String(contra.getPassword());
-      // Validar las credenciales del usuario
         if (validarCredenciales(usuario, contraseña)) {
             new MENU().setVisible(true);
             this.dispose(); // 
@@ -157,8 +156,6 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
         }
     }
-
-    
     private boolean validarCredenciales(String usuario, String contraseña) {
         try (Connection conexion = DriverManager.getConnection(url, usuario1, contraseña1)) {
             String consulta = "SELECT * FROM usuario WHERE nom_usuario = ? AND contraseña = ?";
@@ -167,11 +164,10 @@ public class Login extends javax.swing.JFrame {
                 co.setString(2, contraseña);
 
                 try (ResultSet re = co.executeQuery()) {
-                    return re.next(); // Devolver true si se encuentra algún registro coincidente
+                    return re.next();
                 }
             }
         } catch (SQLException ex) {
-            // Manejar excepciones (por ejemplo, registrar o mostrar un mensaje de error)
             ex.printStackTrace();
             return false;
         }
